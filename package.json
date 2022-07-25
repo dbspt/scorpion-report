@@ -1,6 +1,6 @@
 {
   "name": "@dbservices/scorpion-report",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scorpion-core support pack",
   "license": "MIT",
   "exports": "./index.js",
@@ -21,7 +21,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "type": "commonjs",
   "scripts": {
     "commit": "cz",
     "build": "tsc"
