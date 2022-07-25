@@ -1,0 +1,53 @@
+{
+  "name": "@dbservices/scorpion-report",
+  "version": "1.0.0",
+  "description": "Scorpion-core support pack",
+  "license": "MIT",
+  "exports": "./index.js",
+  "types": "./index.d.ts",
+  "keywords": [
+    "report",
+    "cucumber",
+    "cucumber-report"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dbspt/scorpion-report.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dbspt/scorpion-report/issues"
+  },
+  "homepage": "https://github.com/dbspt/scorpion-report#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "commit": "cz",
+    "build": "tsc"
+  },
+  "author": {
+    "name": "Cléverson Sampaio",
+    "email": "cleverson@sampaio.dev.br"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/moment": "^2.13.0",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@dbservices/scorpion-html": "^1.0.2",
+    "crypto-js": "^4.1.1",
+    "fs-extra": "^10.1.0",
+    "moment": "^2.29.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
