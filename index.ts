@@ -3,10 +3,16 @@ import * as fs from "fs";
 import * as fse from "fs-extra";
 import * as moment from "moment";
 import layout from "./templates/layout";
+import axios from "axios";
 
 interface IOptions {
   jsonFile: string;
   output: string;
+  husky: {
+    url: string;
+    appId: string;
+    token: string;
+  };
 }
 
 export async function generate(options: IOptions) {
@@ -22,6 +28,20 @@ export async function generate(options: IOptions) {
     throw new Error(
       "An output path for the reports should be defined, no path was provided."
     );
+  }
+
+  if (options.husky) {
+    if (!options.husky.url) {
+      throw new Error("Husky URL needs to be set");
+    }
+  
+    if (!options.husky.appId) {
+      throw new Error("Husky App ID needs to be set");
+    }
+  
+    if (!options.husky.token) {
+      throw new Error("Husky token needs to be set");
+    }
   }
 
   const reportFile = path.resolve(__dirname, "..", "..", "..");
@@ -108,4 +128,17 @@ export async function generate(options: IOptions) {
     path.resolve(reportFile, options.output),
     layout(report)
   );
+
+  if (options.output) {
+    if (options.husky) {
+      let data = JSON.stringify(report);
+      let config = {
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": `Bearer ${options.husky.token}`,
+        },
+      };
+      await axios.post(`${options.husky.url}/${options.husky.appId}`, data, config);
+    }
+  }
 }
